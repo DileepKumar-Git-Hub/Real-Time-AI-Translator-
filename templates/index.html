@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Polyglot Live — Real-Time Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="hero">
+    <h1>🌐 Polyglot Live</h1>
+    <p>Translate text instantly. Speak, auto-detect language, and copy or download results.</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h3>Input</h3>
+      <textarea id="srcText" placeholder="Type or paste text here…"></textarea>
+
+      <div class="row">
+        <label class="select-wrap">
+          <span>From</span>
+          <select id="srcLang">
+            <option value="auto" selected>Auto Detect</option>
+          </select>
+        </label>
+        <label class="select-wrap">
+          <span>To</span>
+          <select id="tgtLang"></select>
+        </label>
+        <button id="btnSwap" class="btn ghost" title="Swap languages">⇄ Swap</button>
+        <div class="spacer"></div>
+        <button id="btnSpeak" class="btn" title="Start/Stop speech input">🎙️ Speak</button>
+        <button id="btnTranslate" class="btn">Translate (Ctrl+Enter)</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h3>Translation</h3>
+        <div id="status" class="status muted">Ready.</div>
+        <div id="outText" class="out"></div>
+        <div class="row">
+          <button id="btnCopy" class="btn ghost">Copy</button>
+          <button id="btnDownload" class="btn ghost">Download .txt</button>
+        </div>
+        <div class="badges" id="badges"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Tips</h3>
+        <ul class="tips">
+          <li>Use <b>Auto Detect</b> if you’re unsure of the source language.</li>
+          <li>Click <b>🎙️ Speak</b> to dictate and translate in real time (Chrome recommended).</li>
+          <li>Use <b>Ctrl + Enter</b> to translate quickly.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Built with Flask + GoogleTranslator + Web Speech API
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
